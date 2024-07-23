@@ -1,0 +1,14 @@
+# to login to postgres
+psql --username=freecodecamp --dbname=postgres
+
+# Create Database
+CREATE DATABASE worldcup;
+
+# Create teams table
+CREATE TABLE teams(team_id SERIAL PRIMARY_KEY, name VARCHAR(200) NOT NULL);
+
+# Create games table
+CREATE TABLE games(game_id SERIAL PRIMARY KEY, year INT NOT NULL, round VARCHAR(200) NOT NULL, winner_id INT NOT NULL REFERENCES teams(team_id), opponent_id INT NOT NULL REFERENCES teams(team_id), winner_goals INT NOT NULL, opponent_goals INT NOT NULL);
+
+# To run the insert_data.sh file in new terminal run below commond
+./insert_data.sh
